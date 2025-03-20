@@ -1,6 +1,6 @@
 <?php
 
-use Gii\ModuleInformedConsent\{
+use Hanafalah\ModuleInformedConsent\{
     Models as ModuleInformedConsent,
     Contracts
 };

@@ -1,12 +1,12 @@
 <?php
 
-use Gii\ModuleInformedConsent\Models\InformedConsent;
-use Gii\ModuleInformedConsent\Models\MasterInformedConsent;
+use Hanafalah\ModuleInformedConsent\Models\InformedConsent;
+use Hanafalah\ModuleInformedConsent\Models\MasterInformedConsent;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Zahzah\LaravelSupport\Concerns\NowYouSeeMe;
-use Zahzah\ModuleTransaction\Models\Transaction\Transaction;
+use Hanafalah\LaravelSupport\Concerns\NowYouSeeMe;
+use Hanafalah\ModuleTransaction\Models\Transaction\Transaction;
 
 return new class extends Migration
 {
@@ -14,7 +14,8 @@ return new class extends Migration
 
     private $__table;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->__table = app(config('database.models.InformedConsent', InformedConsent::class));
     }
 
@@ -26,29 +27,29 @@ return new class extends Migration
     public function up(): void
     {
         $table_name = $this->__table->getTable();
-        if (!$this->isTableExists()){
+        if (!$this->isTableExists()) {
             Schema::create($table_name, function (Blueprint $table) {
-                $transaction = app(config('database.models.Transaction',Transaction::class));
-                $master_informed = app(config('database.models.MasterInformedConsent',MasterInformedConsent::class));
+                $transaction = app(config('database.models.Transaction', Transaction::class));
+                $master_informed = app(config('database.models.MasterInformedConsent', MasterInformedConsent::class));
 
                 $table->ulid('id')->primary()->collation('utf8mb4_bin');
                 $table->foreignIdFor($transaction::class)
-                      ->nullable()->index()->constrained()
-                      ->cascadeOnUpdate()->restrictOnDelete();
+                    ->nullable()->index()->constrained()
+                    ->cascadeOnUpdate()->restrictOnDelete();
 
-                $table->foreignIdFor($master_informed::class,'master_consent_id')
-                      ->nullable()->index()->constrained($master_informed->getTable(),$master_informed->getKey(),'mi_ms')
-                      ->cascadeOnUpdate()->restrictOnDelete();
+                $table->foreignIdFor($master_informed::class, 'master_consent_id')
+                    ->nullable()->index()->constrained($master_informed->getTable(), $master_informed->getKey(), 'mi_ms')
+                    ->cascadeOnUpdate()->restrictOnDelete();
 
-                $table->string("author_type",50);
-                $table->string("author_id",36);
+                $table->string("author_type", 50);
+                $table->string("author_id", 36);
 
                 $table->tinyInteger("status");
                 $table->json("props");
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->index(['author_type','author_id'],'ic_author');
+                $table->index(['author_type', 'author_id'], 'ic_author');
             });
         }
     }

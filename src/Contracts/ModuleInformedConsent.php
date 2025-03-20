@@ -1,9 +1,7 @@
 <?php
 
-namespace Gii\ModuleInformedConsent\Contracts;
+namespace Hanafalah\ModuleInformedConsent\Contracts;
 
-use Zahzah\LaravelSupport\Contracts\DataManagement;
+use Hanafalah\LaravelSupport\Contracts\DataManagement;
 
-interface ModuleInformedConsent extends DataManagement {
-
-}
+interface ModuleInformedConsent extends DataManagement {}

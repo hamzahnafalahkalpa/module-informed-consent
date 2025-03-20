@@ -1,12 +1,12 @@
 <?php
 
-namespace Gii\ModuleInformedConsent;
+namespace Hanafalah\ModuleInformedConsent;
 
-use Gii\ModuleInformedConsent\{
+use Hanafalah\ModuleInformedConsent\{
     Models\ServiceItem,
     Schemas\ServiceItem as SchemaServiceItem,
 };
-use Zahzah\LaravelSupport\Providers\BaseServiceProvider;
+use Hanafalah\LaravelSupport\Providers\BaseServiceProvider;
 
 class ModuleInformedConsentServiceProvider extends BaseServiceProvider
 {
@@ -18,22 +18,22 @@ class ModuleInformedConsentServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->registerMainClass(ModuleInformedConsent::class)
-             ->registerCommandService(Providers\CommandServiceProvider::class)
-             ->registers([
+            ->registerCommandService(Providers\CommandServiceProvider::class)
+            ->registers([
                 '*',
-                'Services'  => function(){
-                    $this->binds([
-
-                    ]);
+                'Services'  => function () {
+                    $this->binds([]);
                 },
-             ]);
+            ]);
     }
 
-    protected function dir(): string{
-        return __DIR__.'/';
+    protected function dir(): string
+    {
+        return __DIR__ . '/';
     }
 
-    protected function migrationPath(string $path = ''): string{
+    protected function migrationPath(string $path = ''): string
+    {
         return database_path($path);
     }
 }

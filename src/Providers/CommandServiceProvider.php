@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Gii\ModuleInformedConsent\Providers;
+namespace Hanafalah\ModuleInformedConsent\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Gii\ModuleInformedConsent\Commands as Commands;
+use Hanafalah\ModuleInformedConsent\Commands as Commands;
 
 class CommandServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,8 @@ class CommandServiceProvider extends ServiceProvider
     ];
 
 
-    public function register(){
+    public function register()
+    {
         $this->commands($this->commands);
     }
     /**

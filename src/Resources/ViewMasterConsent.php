@@ -1,11 +1,11 @@
 <?php
 
-namespace Gii\ModuleInformedConsent\Resources;
+namespace Hanafalah\ModuleInformedConsent\Resources;
 
 
-use Zahzah\LaravelSupport\Resources\ApiResource;
-use Gii\ModuleService\Enums\ServiceItem\Flag;
-use Zahzah\ModuleTransaction\Resources\PriceComponent\ShowPriceComponent;
+use Hanafalah\LaravelSupport\Resources\ApiResource;
+use Hanafalah\ModuleService\Enums\ServiceItem\Flag;
+use Hanafalah\ModuleTransaction\Resources\PriceComponent\ShowPriceComponent;
 
 class ViewMasterConsent extends ApiResource
 {
@@ -16,31 +16,32 @@ class ViewMasterConsent extends ApiResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request) : array {
-       $arr = [
-           'id'               => $this->id,
-           'name'             => $this->name,
-           'linked'           => $this->linked,
-           'status'           => $this->flag,
-           'label'           => $this->label,
-           'price_component'  => $this->relationValidation("priceComponent", function() {
-               return $this->priceComponent->toViewApi();
-           }),
-           'price_components'  => $this->relationValidation("priceComponents", function() {
-               return $this->priceComponents->transform(function($price_component){
-                   return $price_component->toViewApi();
-               });
-           }),
-       ];
+    public function toArray($request): array
+    {
+        $arr = [
+            'id'               => $this->id,
+            'name'             => $this->name,
+            'linked'           => $this->linked,
+            'status'           => $this->flag,
+            'label'           => $this->label,
+            'price_component'  => $this->relationValidation("priceComponent", function () {
+                return $this->priceComponent->toViewApi();
+            }),
+            'price_components'  => $this->relationValidation("priceComponents", function () {
+                return $this->priceComponents->transform(function ($price_component) {
+                    return $price_component->toViewApi();
+                });
+            }),
+        ];
 
         $props = $this->getPropsData();
         foreach ($props as $key => $prop) {
-            if($prop != "created_at" || $prop != "updated_at") {
+            if ($prop != "created_at" || $prop != "updated_at") {
                 $arr['forms'][$key] = $prop;
             }
         }
 
-       
-       return $arr;
-  }
+
+        return $arr;
+    }
 }

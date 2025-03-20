@@ -1,12 +1,13 @@
 <?php
 
-namespace Gii\ModuleInformedConsent\Schemas;
+namespace Hanafalah\ModuleInformedConsent\Schemas;
 
-use Gii\ModuleInformedConsent\Contracts;
-use Zahzah\LaravelSupport\Supports\PackageManagement;
+use Hanafalah\ModuleInformedConsent\Contracts;
+use Hanafalah\LaravelSupport\Supports\PackageManagement;
 
-class MasterInfomedConsent extends PackageManagement implements Contracts\InformedConsent{
+class MasterInfomedConsent extends PackageManagement implements Contracts\InformedConsent
+{
     protected array $__guard   = ['id'];
-    protected array $__add     = ["name","linked",'status',"type","label"];
+    protected array $__add     = ["name", "linked", 'status', "type", "label"];
     protected string $__entity = 'InformedConsentModel';
 }

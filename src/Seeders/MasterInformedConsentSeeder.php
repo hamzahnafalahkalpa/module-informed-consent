@@ -1,25 +1,32 @@
 <?php
 
-namespace Gii\ModuleInformedConsent\Seeders;
+namespace Hanafalah\ModuleInformedConsent\Seeders;
 
-use Gii\ModuleExamination\Models\MasterVaccine;
-use Gii\ModuleInformedConsent\Models\MasterInformedConsent;
+use Hanafalah\ModuleExamination\Models\MasterVaccine;
+use Hanafalah\ModuleInformedConsent\Models\MasterInformedConsent;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class MasterInformedConsentSeeder extends Seeder{
+class MasterInformedConsentSeeder extends Seeder
+{
     public function run()
     {
-        $masterInformedConsent = app(config('database.models.MasterInformedConsent',MasterInformedConsent::class));
+        $masterInformedConsent = app(config('database.models.MasterInformedConsent', MasterInformedConsent::class));
 
         $datas = [
-            ["name" => "Surat Sakit", "flag" => "SICK_LATTER",'props' => [
-                "first_date"          => '',
-                "last_date"           => '',
+            [
+                "name" => "Surat Sakit",
+                "flag" => "SICK_LATTER",
+                'props' => [
+                    "first_date"          => '',
+                    "last_date"           => '',
                 ]
             ],
-            ["name" => "Surat Sehat", "flag" => "HEALTH_LATTER", 'props' => [
-                        "description" => "",
+            [
+                "name" => "Surat Sehat",
+                "flag" => "HEALTH_LATTER",
+                'props' => [
+                    "description" => "",
                 ]
             ],
             ["name" => "Persetujuan Tindakan Medis", "flag" => "APPROVE_TREATMENT", 'props' => [
@@ -34,7 +41,7 @@ class MasterInformedConsentSeeder extends Seeder{
                 "prognosis"             => '',
                 "alternatives"          => '',
                 "approve_by"            => '',
-                ]],
+            ]],
             ["name" => "Penolakan Tindakan Medis", "flag" => "REJECT_TREATMENT", 'props' => [
                 "diagnosis_wd"          => '',
                 "basic_diagnosis"       => '',
@@ -47,7 +54,7 @@ class MasterInformedConsentSeeder extends Seeder{
                 "prognosis"             => '',
                 "alternatives"          => '',
                 "approve_by"            => '',
-                ]]
+            ]]
         ];
 
         foreach ($datas as $data) {
