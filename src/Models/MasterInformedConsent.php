@@ -15,14 +15,14 @@ class MasterInformedConsent extends BaseModel
     protected $list       = ['id', 'name', 'linked', 'status', "type", "label", "props"];
     protected $show       = [];
 
-    public function toViewApi()
+    public function getViewResource()
     {
-        return new ViewMasterConsent($this);
+        return ViewMasterConsent::class;
     }
 
-    public function toShowApi()
+    public function getShowResource()
     {
-        return new ViewMasterConsent($this);
+        return ViewMasterConsent::class;
     }
 
     //END EIGER SECTION

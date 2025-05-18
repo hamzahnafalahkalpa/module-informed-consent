@@ -18,14 +18,14 @@ class InformedConsent extends BaseModel
     protected $list       = ['id', 'transaction_id', 'author_id', 'author_type', "master_consent_id", "status", "props"];
     protected $show       = [];
 
-    public function toViewApi()
+    public function getViewResource()
     {
-        return new ViewInformedConsent($this);
+        return ViewInformedConsent::class;
     }
 
-    public function toShowApi()
+    public function getShowResource()
     {
-        return new ViewInformedConsent($this);
+        return ViewInformedConsent::class;
     }
 
     //END EIGER SECTION
