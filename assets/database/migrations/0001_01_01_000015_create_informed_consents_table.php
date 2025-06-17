@@ -32,7 +32,7 @@ return new class extends Migration
                 $transaction = app(config('database.models.Transaction', Transaction::class));
                 $master_informed = app(config('database.models.MasterInformedConsent', MasterInformedConsent::class));
 
-                $table->ulid('id')->primary()->collation('utf8mb4_bin');
+                $table->ulid('id')->primary();
                 $table->foreignIdFor($transaction::class)
                     ->nullable()->index()->constrained()
                     ->cascadeOnUpdate()->restrictOnDelete();
