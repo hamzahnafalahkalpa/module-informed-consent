@@ -19,12 +19,7 @@ class ModuleInformedConsentServiceProvider extends BaseServiceProvider
     {
         $this->registerMainClass(ModuleInformedConsent::class)
             ->registerCommandService(Providers\CommandServiceProvider::class)
-            ->registers([
-                '*',
-                'Services'  => function () {
-                    $this->binds([]);
-                },
-            ]);
+            ->registers(['*']);
     }
 
     protected function dir(): string

@@ -1,20 +1,12 @@
 <?php
 
-namespace Hanafalah\ModuleInformedConsent\Resources;
+namespace Hanafalah\ModuleInformedConsent\Resources\InformedConsent;
 
 
 use Hanafalah\LaravelSupport\Resources\ApiResource;
-use Hanafalah\ModuleService\Enums\ServiceItem\Flag;
 
 class ViewInformedConsent extends ApiResource
 {
-    protected static $__depth = 0;
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request): array
     {
         $arr = [
@@ -31,7 +23,6 @@ class ViewInformedConsent extends ApiResource
             'status'           => $this->status,
             'result'           => $this->result,
         ];
-
 
         return $arr;
     }

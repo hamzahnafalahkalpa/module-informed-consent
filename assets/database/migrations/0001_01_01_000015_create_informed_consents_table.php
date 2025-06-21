@@ -37,7 +37,7 @@ return new class extends Migration
                     ->nullable()->index()->constrained()
                     ->cascadeOnUpdate()->restrictOnDelete();
 
-                $table->foreignIdFor($master_informed::class, 'master_consent_id')
+                $table->foreignIdFor($master_informed::class)
                     ->nullable()->index()->constrained($master_informed->getTable(), $master_informed->getKey(), 'mi_ms')
                     ->cascadeOnUpdate()->restrictOnDelete();
 

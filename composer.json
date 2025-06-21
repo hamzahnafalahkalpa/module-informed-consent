@@ -5,6 +5,7 @@
     "require": {
         "hanafalah/laravel-support": "1.x-dev as 1.0",
         "hanafalah/module-examination": "1.x-dev as 1.0",
+        "hanafalah/module-service": "1.x-dev as 1.0",
         "hanafalah/module-patient": "1.x-dev as 1.0"
     },
     "autoload": {

@@ -2,40 +2,15 @@
 
 namespace Hanafalah\ModuleInformedConsent\Models;
 
-use Hanafalah\ModuleInformedConsent\Resources\ViewMasterConsent;
-use Hanafalah\LaravelHasProps\Concerns\HasProps;
-use Hanafalah\LaravelSupport\Models\BaseModel;
-use Hanafalah\MicroTenant\Concerns\Models\TenantConnection;
+use Hanafalah\LaravelSupport\Models\Unicode\Unicode;
+use Hanafalah\ModuleInformedConsent\Resources\MasterConsent\{ViewMasterConsent,ShowMasterConsent};
 
-class MasterInformedConsent extends BaseModel
+class MasterInformedConsent extends Unicode
 {
-    use HasProps, TenantConnection;
+    protected $table = 'unicodes';
 
-    protected $table      = "master_informed_consents";
-    protected $list       = ['id', 'name', 'linked', 'status', "type", "label", "props"];
-    protected $show       = [];
+    public function getViewResource(){return ViewMasterConsent::class;}
+    public function getShowResource(){return ShowMasterConsent::class;}
 
-    public function getViewResource()
-    {
-        return ViewMasterConsent::class;
-    }
-
-    public function getShowResource()
-    {
-        return ViewMasterConsent::class;
-    }
-
-    //END EIGER SECTION
-    public function priceComponent()
-    {
-        return $this->morphOneModel("PriceComponent", "model");
-    }
-    public function priceComponents()
-    {
-        return $this->morphManyModel("PriceComponent", "model");
-    }
-    public function informedConsent()
-    {
-        return $this->hasOneModel("InformedConsent", 'master_consent_id');
-    }
+    public function informedConsent(){return $this->hasOneModel("InformedConsent");}
 }
