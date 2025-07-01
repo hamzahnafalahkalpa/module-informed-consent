@@ -12,13 +12,13 @@ class ViewInformedConsent extends ApiResource
         $arr = [
             'id'               => $this->id,
             'transaction'      => $this->relationValidation("transaction", function () {
-                return $this->transaction->toShowApi();
+                return $this->transaction->toShowApi()->resolve();
             }),
             'master_consent'   => $this->relationValidation("masterConsent", function () {
-                return $this->masterConsent->toViewApi();
+                return $this->masterConsent->toViewApi()->resolve();
             }),
             'author'           => $this->relationValidation("author", function () {
-                return $this->author->toShowApi();
+                return $this->author->toShowApi()->resolve();
             }),
             'status'           => $this->status,
             'result'           => $this->result,
