@@ -2,34 +2,35 @@
 
 namespace Hanafalah\ModuleInformedConsent\Seeders;
 
-use Hanafalah\ModuleExamination\Models\MasterVaccine;
-use Hanafalah\ModuleInformedConsent\Models\MasterInformedConsent;
+use Hanafalah\LaravelSupport\Concerns\Support\HasRequestData;
+use Hanafalah\ModuleInformedConsent\Contracts\Schemas\MasterInformedConsent as SchemasMasterInformedConsent;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class MasterInformedConsentSeeder extends Seeder
 {
+    use HasRequestData;
     public function run()
     {
-        $masterInformedConsent = app(config('database.models.MasterInformedConsent', MasterInformedConsent::class));
+
+        $masterInformedConsent = app(config('app.contracts.MasterInformedConsent', SchemasMasterInformedConsent::class));
 
         $datas = [
             [
                 "name" => "Surat Sakit",
-                "flag" => "SICK_LATTER",
-                'props' => [
+                "label" => "SICK_LATTER",
+                'form' => [
                     "first_date"          => '',
                     "last_date"           => '',
                 ]
             ],
             [
                 "name" => "Surat Sehat",
-                "flag" => "HEALTH_LATTER",
-                'props' => [
+                "label" => "HEALTH_LATTER",
+                'form' => [
                     "description" => "",
                 ]
             ],
-            ["name" => "Persetujuan Tindakan Medis", "flag" => "APPROVE_TREATMENT", 'props' => [
+            ["name" => "Persetujuan Tindakan Medis", "label" => "APPROVE_TREATMENT", 'form' => [
                 "diagnosis_wd"          => '',
                 "basic_diagnosis"       => '',
                 "medical_procedure"     => '',
@@ -42,7 +43,7 @@ class MasterInformedConsentSeeder extends Seeder
                 "alternatives"          => '',
                 "approve_by"            => '',
             ]],
-            ["name" => "Penolakan Tindakan Medis", "flag" => "REJECT_TREATMENT", 'props' => [
+            ["name" => "Penolakan Tindakan Medis", "label" => "REJECT_TREATMENT", 'form' => [
                 "diagnosis_wd"          => '',
                 "basic_diagnosis"       => '',
                 "medical_procedure"     => '',
@@ -58,12 +59,9 @@ class MasterInformedConsentSeeder extends Seeder
         ];
 
         foreach ($datas as $data) {
-            $masterInformedConsent->firstOrCreate([
-                'name'          => $data['name'],
-                'label'          => $data['flag'],
-                'linked'        => "-",
-                'props'         => json_encode($data['props'])
-            ]);
+            $masterInformedConsent->prepareStoreMasterInformedConsent(
+                $this->requestDTO(config('app.contracts.MasterInformedConsentData'), $data)
+            );
         }
     }
 }

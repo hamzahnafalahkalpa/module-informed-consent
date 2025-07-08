@@ -3,9 +3,9 @@
 namespace Hanafalah\ModuleInformedConsent\Schemas;
 
 use Hanafalah\LaravelSupport\Supports\PackageManagement;
-use Hanafalah\ModuleInformedConsent\Contracts\Schemas\InformedConsent;
+use Hanafalah\ModuleInformedConsent\Contracts\Schemas\InformedConsent as SchemasInformedConsent;
 
-class MasterInfomedConsent extends PackageManagement implements InformedConsent
+class InformedConsent extends PackageManagement implements SchemasInformedConsent
 {
     protected string $__entity = 'InformedConsentModel';
 }

@@ -22,8 +22,8 @@ class MasterInformedConsent extends Unicode implements ContractsMasterInformedCo
         ]
     ];
 
-    public function prepareStoreMasterInformedConsent(MasterInformedConsentData $master_informed_consent_dto): Model{     
-        $master_informed_consent = $this->prepareStoreUnicode($master_informed_consent_dto);       
+    public function prepareStoreMasterInformedConsent(MasterInformedConsentData $master_informed_consent_dto): Model{
+        $master_informed_consent = $this->prepareStoreUnicode($master_informed_consent_dto);
         return static::$master_informed_consent_model = $master_informed_consent;
     }
 

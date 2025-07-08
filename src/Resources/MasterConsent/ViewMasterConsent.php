@@ -15,7 +15,9 @@ class ViewMasterConsent extends ViewUnicode
      */
     public function toArray($request): array
     {
-        $arr = [];
+        $arr = [
+            'form' => $this->form
+        ];
         $arr = $this->mergeArray(parent::toArray($request), $arr);
         return $arr;
     }
