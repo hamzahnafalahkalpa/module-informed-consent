@@ -6,15 +6,22 @@ use Hanafalah\ModuleInformedConsent\{
 };
 
 return [
-    'contracts'  => [
-        'informed_consent'        => Contracts\InformedConsent::class,
-        'master_informed_consent' => Contracts\MasterInformedConsent::class,
-        'module_informed_consent' => Contracts\ModuleInformedConsent::class
+    'namespace' => 'Hanafalah\ModuleInformedConsent',
+    'app' => [
+        'contracts'  => [
+        ],
+    ],
+    'libs' => [
+        'model' => 'Models',
+        'contract' => 'Contracts',
+        'schema' => 'Schemas',
+        'data' => 'Data',
+        'resource' => 'Resources',
+        'request' => 'Requests',
+        'migration' => '../assets/database/migrations'
     ],
     'database'   => [
         'models' => [
-            'MasterInformedConsent' => ModuleInformedConsent\MasterInformedConsent::class,
-            'InformedConsent'       => ModuleInformedConsent\InformedConsent::class,
         ]
     ],
 ];

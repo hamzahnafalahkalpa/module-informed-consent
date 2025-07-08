@@ -27,7 +27,7 @@ class MasterInformedConsent extends Unicode implements ContractsMasterInformedCo
         return static::$master_informed_consent_model = $master_informed_consent;
     }
 
-    public function master_informed_consent(mixed $conditionals = null): Builder{
+    public function masterInformedConsent(mixed $conditionals = null): Builder{
         return $this->unicode($conditionals);
     }
 }
