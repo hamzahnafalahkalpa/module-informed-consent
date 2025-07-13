@@ -6,18 +6,19 @@ use Hanafalah\ModuleInformedConsent\{
 };
 
 return [
-    'namespace' => 'Hanafalah\ModuleInformedConsent',
+    'namespace' => 'Hanafalah\\ModuleInformedConsent',
     'app' => [
-        'contracts'  => [
-        ],
+        'contracts' => [
+            //ADD YOUR CONTRACTS HERE
+        ]
     ],
     'libs' => [
         'model' => 'Models',
         'contract' => 'Contracts',
         'schema' => 'Schemas',
+        'database' => 'Database',
         'data' => 'Data',
         'resource' => 'Resources',
-        'request' => 'Requests',
         'migration' => '../assets/database/migrations'
     ],
     'database'   => [
