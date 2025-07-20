@@ -11,20 +11,20 @@ use Illuminate\Database\Eloquent\Model;
 class MasterInformedConsent extends Unicode implements ContractsMasterInformedConsent
 {
     protected string $__entity = 'MasterInformedConsent';
-    public static $master_informed_consent_model;
+    public $master_informed_consent_model;
     protected mixed $__order_by_created_at = false; //asc, desc, false
 
     protected array $__cache = [
         'index' => [
             'name'     => 'master_informed_consent',
             'tags'     => ['master_informed_consent', 'master_informed_consent-index'],
-            'forever'  => true
+            'duration' => 24*7
         ]
     ];
 
     public function prepareStoreMasterInformedConsent(MasterInformedConsentData $master_informed_consent_dto): Model{
         $master_informed_consent = $this->prepareStoreUnicode($master_informed_consent_dto);
-        return static::$master_informed_consent_model = $master_informed_consent;
+        return $this->master_informed_consent_model = $master_informed_consent;
     }
 
     public function masterInformedConsent(mixed $conditionals = null): Builder{
