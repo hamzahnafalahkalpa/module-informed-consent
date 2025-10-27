@@ -13,13 +13,6 @@
             "Hanafalah\\ModuleInformedConsent\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Hanafalah\\ModuleInformedConsent\\ModuleInformedConsentServiceProvider"
-            ]
-        }
-    },
     "authors": [
         {
             "name": "Hamzah",
