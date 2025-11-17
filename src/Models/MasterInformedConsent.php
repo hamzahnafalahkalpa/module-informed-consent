@@ -23,7 +23,7 @@ class MasterInformedConsent extends Unicode
         return $this->hasOneModel("InformedConsent");
     }
 
-    protected function isUsingService(): bool
+    public function isUsingService(): bool
     {
         return true;
     }
