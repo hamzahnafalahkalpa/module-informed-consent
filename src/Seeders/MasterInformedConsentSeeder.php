@@ -12,7 +12,6 @@ class MasterInformedConsentSeeder extends Seeder
     public function run()
     {
 
-        echo "[DEBUG] Booting ".class_basename($this)."\n";
         $masterInformedConsent = app(config('app.contracts.MasterInformedConsent', SchemasMasterInformedConsent::class));
 
         $datas = [
